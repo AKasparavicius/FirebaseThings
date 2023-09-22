@@ -69,7 +69,7 @@
                 android:textColor="@color/black"/>
 
             <EditText
-                android:id="@+id/emailField"
+                android:id="@+id/emailField_rgstr"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableRight="@drawable/email_icon"/>
@@ -86,7 +86,7 @@
                 android:textColor="@color/black"/>
 
             <EditText
-                android:id="@+id/passwordField"
+                android:id="@+id/passwordField_rgstr"
                 android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -100,7 +100,7 @@
                 android:textColor="@color/black"/>
 
             <EditText
-                android:id="@+id/passwordField2"
+                android:id="@+id/passwordField_cnfrm"
                 android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
