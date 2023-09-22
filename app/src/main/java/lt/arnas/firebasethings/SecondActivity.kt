@@ -23,6 +23,7 @@ class SecondActivity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
 
         signUpButton()
+        backButton()
 
     }
 
@@ -52,6 +53,12 @@ class SecondActivity : AppCompatActivity() {
                 Toast.makeText(this, "One or more fields are empty!",
                     Toast.LENGTH_SHORT).show()
             }
+        }
+    }
+
+    fun backButton() {
+        binding.goBackBtn.setOnClickListener {
+            finish()
         }
     }
 }
