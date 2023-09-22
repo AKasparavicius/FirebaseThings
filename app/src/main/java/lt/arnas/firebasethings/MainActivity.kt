@@ -3,6 +3,7 @@ package lt.arnas.firebasethings
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import lt.arnas.firebasethings.databinding.ActivityMainBinding
 
@@ -24,6 +25,5 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, SecondActivity::class.java)
             startActivity(intent)
         }
-
     }
 }
