@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "350905692513",
+    "project_id": "fir-things-f928c",
+    "storage_bucket": "fir-things-f928c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:350905692513:android:597422784cdddd70e81520",
+        "android_client_info": {
+          "package_name": "lt.arnas.firebasethings"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCU9anxylJizYhsLDBgPWucT-5W-YTpNtk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
