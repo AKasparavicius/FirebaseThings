@@ -1,8 +1,10 @@
 package lt.arnas.firebasethings
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
@@ -34,12 +36,16 @@ class SecondActivity : AppCompatActivity() {
             val passwordConfirm = binding.passwordFieldCnfrm.text.toString()
 
             if (email.isNotEmpty() && password.isNotEmpty() && passwordConfirm.isNotEmpty()) {
-                if (password.equals(passwordConfirm)) {
+                if (password == passwordConfirm) {
                     firebaseAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener {
                             if(it.isSuccessful){
+                                Toast.makeText(this, "Account created successfully!",
+                                    Toast.LENGTH_SHORT).show()
+
                                 val intent = Intent(this, MainActivity::class.java)
                                 startActivity(intent)
+                                finish()
                             } else {
                                 Toast.makeText(this, it.exception.toString(),
                                     Toast.LENGTH_SHORT).show()

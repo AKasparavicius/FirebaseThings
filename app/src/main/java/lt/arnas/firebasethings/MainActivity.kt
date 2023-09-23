@@ -21,6 +21,35 @@ class MainActivity : AppCompatActivity() {
 
         firebaseAuth = FirebaseAuth.getInstance()
 
+        registerButton()
+        loginButton()
+    }
+
+    private fun loginButton() {
+        binding.loginBtn.setOnClickListener {
+            val email = binding.emailField.text.toString()
+            val password = binding.passwordField.text.toString()
+
+            if (email.isNotEmpty() && password.isNotEmpty()) {
+                    firebaseAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener {
+                            if(it.isSuccessful){
+                                val intent = Intent(this, LoggedInScreen::class.java)
+                                startActivity(intent)
+                                finish()
+                            } else {
+                                Toast.makeText(this, it.exception.toString(),
+                                    Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                } else {
+                    Toast.makeText(this, "Seems like there is an empty field...",
+                        Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
+
+    private fun registerButton() {
         binding.registerBtn.setOnClickListener {
             val intent = Intent(this, SecondActivity::class.java)
             startActivity(intent)
