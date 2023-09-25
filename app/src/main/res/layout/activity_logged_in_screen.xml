@@ -4,19 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_700"
+    android:background="@drawable/background1"
     tools:context=".LoggedInScreen">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black"
-        android:alpha="0.5">
+        android:alpha="0.8">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:layout_marginTop="680dp"/>
+            android:layout_alignParentBottom="true" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -58,11 +57,16 @@
                 android:text="Name"
                 android:textColor="@color/white" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="400dp"/>
+
             <Button
                 android:id="@+id/logout_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/black"
+                android:layout_gravity="center"
                 android:text="Sign out"/>
 
 
