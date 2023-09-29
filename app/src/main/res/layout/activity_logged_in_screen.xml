@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background1"
+    android:background="@color/teal_700"
     tools:context=".LoggedInScreen">
 
     <RelativeLayout
@@ -12,11 +12,23 @@
         android:layout_height="match_parent"
         android:alpha="0.8">
 
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/nav_bar"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_alignParentBottom="true"
-            app:menu="@menu/bottom_nav"/>
+            app:menu="@menu/bottom_nav">
+
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/nav_bar">
+
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -70,9 +82,17 @@
                 android:layout_gravity="center"
                 android:text="Sign out"/>
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                >
+
+            </FrameLayout>
+
 
         </LinearLayout>
 
     </RelativeLayout>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
