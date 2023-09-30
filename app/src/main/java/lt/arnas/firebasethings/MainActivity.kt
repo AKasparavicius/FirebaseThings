@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import lt.arnas.firebasethings.databinding.ActivityMainBinding
+import lt.arnas.firebasethings.LoggedInScreen
 
 class MainActivity : AppCompatActivity() {
 
