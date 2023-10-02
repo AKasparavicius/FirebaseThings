@@ -1,13 +1,10 @@
 package lt.arnas.firebasethings.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import lt.arnas.firebasethings.R
-import lt.arnas.firebasethings.databinding.FragmentProfileBinding
 import lt.arnas.firebasethings.databinding.FragmentSettingsBinding
 
 private lateinit var binding: FragmentSettingsBinding

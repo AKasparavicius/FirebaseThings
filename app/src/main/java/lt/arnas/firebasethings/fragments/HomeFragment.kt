@@ -11,10 +11,11 @@ import lt.arnas.firebasethings.R
 import lt.arnas.firebasethings.databinding.FragmentHomeBinding
 
 
-private lateinit var binding: FragmentHomeBinding
-private lateinit var firebaseAuth: FirebaseAuth
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
+
+    private lateinit var binding: FragmentHomeBinding
+    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -23,13 +24,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         firebaseAuth = FirebaseAuth.getInstance()
 
-        logoutAcc()
-
         binding.username.text = firebaseAuth.currentUser?.email
-    }
-    private fun logoutAcc() {
+
         binding.logoutBtn.setOnClickListener {
             firebaseAuth.signOut()
+            val intent = Intent(requireActivity(), MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
         }
     }
 }

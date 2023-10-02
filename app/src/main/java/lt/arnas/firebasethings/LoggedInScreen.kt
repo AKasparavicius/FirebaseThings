@@ -2,6 +2,7 @@ package lt.arnas.firebasethings
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
@@ -10,10 +11,11 @@ import lt.arnas.firebasethings.fragments.HomeFragment
 import lt.arnas.firebasethings.fragments.ProfileFragment
 import lt.arnas.firebasethings.fragments.SettingsFragment
 
-private lateinit var binding: ActivityLoggedInScreenBinding
-private lateinit var firebaseAuth: FirebaseAuth
-
 class LoggedInScreen : AppCompatActivity() {
+
+    private lateinit var binding: ActivityLoggedInScreenBinding
+    private lateinit var firebaseAuth: FirebaseAuth
+    lateinit var logoutBtn: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_logged_in_screen)
@@ -25,15 +27,12 @@ class LoggedInScreen : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
 
         binding.navBar.setOnItemReselectedListener {
-
             when(it.itemId) {
                 R.id.home -> changeFragment(HomeFragment())
                 R.id.settings -> changeFragment(SettingsFragment())
                 R.id.profile -> changeFragment(ProfileFragment())
             }
-
         }
-
     }
 
     private fun changeFragment(fragment: Fragment) {
