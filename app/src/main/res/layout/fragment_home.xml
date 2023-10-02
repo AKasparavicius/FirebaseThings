@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/teal_700"
-    tools:context=".HomeFragment">
+    tools:context=".fragments.HomeFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -52,18 +52,6 @@
                 android:textSize="24dp"
                 android:text="Name"
                 android:textColor="@color/white" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="400dp"/>
-
-            <Button
-                android:id="@+id/logout_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:backgroundTint="@color/black"
-                android:layout_gravity="center"
-                android:text="Sign out"/>
 
 
         </LinearLayout>

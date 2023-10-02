@@ -3,13 +3,127 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/teal_700"
+    tools:context=".fragments.ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="PROFILE FRAGMENT"
-        android:textSize="48dp"/>
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:id="@+id/layoutaz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/baseline_monetization_on_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ALT36"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@android:color/darker_gray" />
+
+
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            app:cardCornerRadius="28dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="28dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit your profile"
+                android:textStyle="bold"
+                android:textSize="28dp"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:layout_marginBottom="12dp"/>
+
+            <ImageView
+                android:id="@+id/profile_picture"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/baseline_account_circle_24"
+                android:layout_gravity="center"
+                />
+
+            <TextView
+                android:id="@+id/name_surname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="28dp"
+                android:text="Name Surname"
+                android:layout_gravity="center"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/user_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email Address"
+                android:layout_gravity="center"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:id="@+id/first_name"
+                android:hint="First Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"/>
+
+            <EditText
+                android:id="@+id/last_name"
+                android:hint="Last Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"/>
+
+            <Button
+                android:id="@+id/apply_button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/black"
+                android:layout_gravity="center"
+                android:text="Apply settings"
+                android:layout_marginTop="8dp"/>
+
+            <Button
+                android:id="@+id/logout_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/black"
+                android:layout_gravity="center"
+                android:text="Sign out"
+                android:layout_marginTop="24dp"/>
+
+        </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
 
 </FrameLayout>
