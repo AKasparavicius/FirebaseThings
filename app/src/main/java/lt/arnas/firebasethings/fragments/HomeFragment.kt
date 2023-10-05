@@ -25,12 +25,5 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         firebaseAuth = FirebaseAuth.getInstance()
 
         binding.username.text = firebaseAuth.currentUser?.email
-
-        binding.logoutBtn.setOnClickListener {
-            firebaseAuth.signOut()
-            val intent = Intent(requireActivity(), MainActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-            startActivity(intent)
-        }
     }
 }

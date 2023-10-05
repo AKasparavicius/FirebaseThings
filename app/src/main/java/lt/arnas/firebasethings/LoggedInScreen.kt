@@ -15,7 +15,6 @@ class LoggedInScreen : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoggedInScreenBinding
     private lateinit var firebaseAuth: FirebaseAuth
-    lateinit var logoutBtn: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_logged_in_screen)
