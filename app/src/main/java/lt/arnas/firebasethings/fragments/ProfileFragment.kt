@@ -30,7 +30,22 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         logOut()
         addData()
+        setFirstLastName()
 
+    }
+
+    private fun setFirstLastName() {
+        val userId = firebaseAuth.currentUser!!.uid
+        val ref = db.collection("user").document(userId)
+
+        ref.get().addOnSuccessListener {
+            if(it != null) {
+                val firstName = it.data?.get("name")?.toString()
+                val lastName = it.data?.get("surname")?.toString()
+
+                binding.nameSurname.text = "$firstName $lastName"
+            }
+        }
     }
 
     private fun addData() {
