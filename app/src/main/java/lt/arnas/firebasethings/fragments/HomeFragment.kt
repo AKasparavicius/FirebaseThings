@@ -31,6 +31,20 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding.username.text = firebaseAuth.currentUser?.email
 
         addBalance()
+        displayBalance()
+    }
+
+    private fun displayBalance() {
+        val userId = firebaseAuth.currentUser!!.uid
+
+        val ref = db.collection("user").document(userId)
+            .collection("balance").document("balance")
+
+        ref.get().addOnSuccessListener {
+            val balance = it.data?.get("balance")?.toString()
+
+            binding.balance.text = "$" + balance
+        }
     }
 
     private fun addBalance() {
