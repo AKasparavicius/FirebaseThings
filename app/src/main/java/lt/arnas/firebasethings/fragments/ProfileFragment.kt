@@ -37,6 +37,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private fun setFirstLastName() {
         val userId = firebaseAuth.currentUser!!.uid
         val ref = db.collection("user").document(userId)
+            .collection("balance").document("firstLastName")
 
         ref.get().addOnSuccessListener {
             if(it != null) {
@@ -62,7 +63,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
             val userId = firebaseAuth.currentUser!!.uid
 
-            db.collection("user").document(userId).set(userMap)
+            db.collection("user").document(userId).collection("balance")
+                .document("firstLastName").set(userMap)
                 .addOnSuccessListener {
                     Toast.makeText(activity, "Saved successfully!", Toast.LENGTH_LONG).show()
                     binding.firstName.text.clear()

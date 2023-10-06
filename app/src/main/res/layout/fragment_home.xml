@@ -85,11 +85,18 @@
                     android:textStyle="bold"
                     android:gravity="center"/>
 
+                <EditText
+                    android:id="@+id/moneyAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter an amount"
+                    android:gravity="center"/>
+
                 <Button
+                    android:id="@+id/add_balance"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Top up your balance"
-                    android:layout_marginBottom="48dp"/>
+                    android:text="Top up your balance" />
 
                 <Button
                     android:layout_width="match_parent"
