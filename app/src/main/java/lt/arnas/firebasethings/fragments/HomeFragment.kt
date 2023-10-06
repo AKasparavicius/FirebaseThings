@@ -6,7 +6,9 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import lt.arnas.firebasethings.LoggedInScreen
 import lt.arnas.firebasethings.MainActivity
 import lt.arnas.firebasethings.R
@@ -52,13 +54,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         binding.addBalance.setOnClickListener {
             val aBalance = binding.moneyAmount.text.toString()
+            val finalBalance = Integer.parseInt(aBalance)
 
             val userBalance = hashMapOf(
-                "balance" to aBalance
+                "balance" to finalBalance
             )
 
             db.collection("user").document(userId).collection("balance")
-                .document("balance").set(userBalance)
+                .document("balance")
+                .update("balance", FieldValue.increment(finalBalance.toDouble()))
                 .addOnSuccessListener {
                     Toast.makeText(activity, "Money added successfully!", Toast.LENGTH_SHORT)
                         .show()
