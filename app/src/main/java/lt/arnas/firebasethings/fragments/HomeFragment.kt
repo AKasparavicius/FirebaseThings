@@ -32,8 +32,47 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         binding.username.text = firebaseAuth.currentUser?.email
 
+        newUserCheck()
         addBalance()
         displayBalance()
+    }
+
+    private fun newUserCheck() {
+        val userId = firebaseAuth.currentUser!!.uid
+
+        val ref = db.collection("user").document(userId)
+            .collection("balance").document("balance")
+
+        ref.get().addOnSuccessListener {
+            val zeroBalance = hashMapOf(
+                "balance" to 0
+            )
+
+            val balance = it.data?.get("balance")?.toString()
+
+            if (balance == null) {
+                db.collection("user").document(userId)
+                    .collection("balance").document("balance")
+                    .set(zeroBalance)
+            }
+        }
+
+        val ref2 = db.collection("user").document(userId)
+            .collection("balance").document("balance")
+
+        ref2.get().addOnSuccessListener {
+            val blankAcc = hashMapOf(
+                "bankAcc" to ""
+            )
+
+            val balance = it.data?.get("balance")?.toString()
+
+            if (balance == null) {
+                db.collection("user").document(userId)
+                    .collection("balance").document("bankAcc")
+                    .set(blankAcc)
+            }
+        }
     }
 
     private fun displayBalance() {
@@ -60,18 +99,38 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 "balance" to finalBalance
             )
 
-            db.collection("user").document(userId).collection("balance")
-                .document("balance")
-                .update("balance", FieldValue.increment(finalBalance.toDouble()))
-                .addOnSuccessListener {
-                    Toast.makeText(activity, "Money added successfully!", Toast.LENGTH_SHORT)
-                        .show()
-                    binding.moneyAmount.text.clear()
+            val ref = db.collection("user").document(userId)
+                .collection("balance").document("bankAcc")
+
+            ref.get().addOnSuccessListener {
+                val bankAcc = it.data?.get("bankAcc")?.toString()
+
+                if(bankAcc?.length!! == 20) {
+                    db.collection("user").document(userId).collection("balance")
+                        .document("balance")
+                        .update("balance", FieldValue.increment(finalBalance.toDouble()))
+                        .addOnSuccessListener {
+                            Toast.makeText(
+                                activity,
+                                "Money added successfully!",
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
+                            binding.moneyAmount.text.clear()
+                        }
+                        .addOnFailureListener {
+                            Toast.makeText(activity, "Something went wrong :(", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                } else {
+                    Toast.makeText(
+                        activity,
+                        "You don't have a bank account set up yet.\n" +
+                                "Check the settings screen.",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
-                .addOnFailureListener {
-                    Toast.makeText(activity, "Something went wrong :(", Toast.LENGTH_SHORT)
-                        .show()
-                }
+            }
         }
     }
 }
